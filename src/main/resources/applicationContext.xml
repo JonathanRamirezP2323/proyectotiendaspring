@@ -5,14 +5,29 @@
            http://www.springframework.org/schema/beans
            https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- Bean 1: la implementación de NotificacionService -->
-    <bean id="notificacion"
-          class="com.tiendaapp.EmailNotificacion"/>
-
-    <!-- Bean 2: PedidoService recibe 'notificacion' por constructor -->
-    <bean id="pedidoService"
-          class="com.tiendaapp.PedidoService">
+    <!-- Beans de la clase anterior (sin cambios) -->
+    <bean id="notificacion" class="com.tiendaapp.EmailNotificacion"/>
+    <bean id="pedidoService" class="com.tiendaapp.PedidoService">
         <constructor-arg ref="notificacion"/>
     </bean>
+
+    <!-- NUEVO: Bean Prototype -->
+    <bean id="pedido" class="com.tiendaapp.Pedido"
+          scope="prototype"/>
+
+    <!-- NUEVO: Bean con lifecycle -->
+    <bean id="logService" class="com.tiendaapp.LogService"
+          init-method="iniciar" destroy-method="cerrar"/>
+
+    <!-- NUEVO: Bean con property injection -->
+    <bean id="config" class="com.tiendaapp.ConfiguracionApp">
+        <property name="nombreEmpresa" value="TiendaApp"/>
+        <property name="version" value="1.0"/>
+        <property name="modoDebug" value="true"/>
+    </bean>
+
+    <bean id="notificacionWhatsapp" class="com.tiendaapp.WhatsappNotificacion"
+          init-method="conectar" destroy-method="desconectar" />
+
 
 </beans>
