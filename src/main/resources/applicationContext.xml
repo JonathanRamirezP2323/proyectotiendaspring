@@ -2,8 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-           http://www.springframework.org/schema/beans
-           https://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Beans de la clase anterior (sin cambios) -->
     <bean id="notificacion" class="com.tiendaapp.EmailNotificacion"/>
@@ -26,8 +26,10 @@
         <property name="modoDebug" value="true"/>
     </bean>
 
-    <bean id="notificacionWhatsapp" class="com.tiendaapp.WhatsappNotificacion"
-          init-method="conectar" destroy-method="desconectar" />
-
-
+    <bean id="notificacionWhatsApp" class="com.tiendaapp.WhatsappNotificacion"
+          init-method="conectar"
+          destroy-method="desconectar">
+        <property name="codigoPais" value="+593"/>
+        <property name="numeroBase" value="0983317881"/>
+    </bean>
 </beans>

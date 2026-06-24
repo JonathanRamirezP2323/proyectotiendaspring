@@ -26,9 +26,9 @@ public class Main {
     System.out.println("p1: " + p1.getProducto());
     System.out.println("p2: " + p2.getProducto());
 
-    NotificacionService n = new SmsNotificacion();
-    PedidoService svc = new PedidoService(n);
-    svc.crearPedido("Tablet Samsung");
+    NotificacionService whatsApp = ctx.getBean("notificacionWhatsApp", NotificacionService.class);
+    PedidoService svcWhatsApp = new PedidoService(whatsApp);
+    svcWhatsApp.crearPedido("Tablet Samsung");
 
     // 4.Cerrar contexto → dispara destroy-method
     ctx.close();

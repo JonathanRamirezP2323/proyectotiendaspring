@@ -1,26 +1,28 @@
 package com.tiendaapp;
 
-public class WhatsappNotificacion {
+public class WhatsappNotificacion implements NotificacionService {
 
     private String codigoPais;
     private String numeroBase;
 
-    public void setCodigoPais(String p) {
-        this.codigoPais = p;
+    public void setCodigoPais(String codigoPais) {
+        this.codigoPais = codigoPais;
     }
 
-    public void setNumeroBase(String b) {
-        this.numeroBase = b;
+    public void setNumeroBase(String numeroBase) {
+        this.numeroBase = numeroBase;
     }
 
     public void conectar() {
-        System.out.println("[WHATSAPP] Conectado al servidor (código: +593)");
+        System.out.println("[WHATSAPP] Conectar al servidor (código:" +codigoPais + ")");
     }
 
     public void desconectar() {
         System.out.println("[WHATSAPP] Desconectado del servidor");
     }
+
+    @Override
     public void enviar(String mensaje) {
-        System.out.println("[WHATSAPP +593-0991234567] mensaje");
+        System.out.println("[WHATSAPP +593-"+numeroBase+"] mensaje");
     }
 }
