@@ -14,11 +14,11 @@ public class WhatsappNotificacion {
     }
 
     public void conectar() {
-        System.out.println("[WHATSAPP] Conectado al servidor (código: +593 ");
+        System.out.println("[WHATSAPP] Conectado al servidor (código: +593)");
     }
 
     public void desconectar() {
-        System.out.println("[WHATSAPP] Desconectado del servidor (código: +593 ");
+        System.out.println("[WHATSAPP] Desconectado del servidor");
     }
     public void enviar(String mensaje) {
         System.out.println("[WHATSAPP +593-0991234567] mensaje");
